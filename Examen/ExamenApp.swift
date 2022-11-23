@@ -2,7 +2,7 @@
 //  ExamenApp.swift
 //  Examen
 //
-//  Created by CCDM28 on 14/11/22.
+//  Created by CCDM28 on 17/11/22.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct ExamenApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(coreDM:CoreDataManager())
         }
     }
 }
