@@ -21,9 +21,9 @@ class CoreDataManager{
         })
     }
     
-    func guardarUsuario(id: String, nombre: String, apellido: String, username: String, rolid: String, activo: String){
+    func guardarUsuario(codigo: String, nombre: String, apellido: String, username: String, rolid: String, activo: String){
         let usuario = Usuario(context: persitenContainer.viewContext)
-        usuario.id = id
+        usuario.codigo = codigo
         usuario.nombre = nombre
         usuario.apellido = apellido
         usuario.username = username
@@ -61,9 +61,8 @@ class CoreDataManager{
 
     func actualizarUsuario(usuario: Usuario){
         let fetchRequest: NSFetchRequest<Usuario> = Usuario.fetchRequest()
-        let predicate = NSPredicate(format: "id = %@", usuario.id ?? "")
+        let predicate = NSPredicate(format: "codigo = %@", usuario.codigo ?? "")
         fetchRequest.predicate = predicate
-
         do{
             let datos = try persitenContainer.viewContext.fetch(fetchRequest)
             let p = datos.first
@@ -79,9 +78,9 @@ class CoreDataManager{
         }
     }
     
-    func leerUsuarios(id: String) -> Usuario?{
+    func leerUsuarios(codigo: String) -> Usuario?{
          let fetchRequest: NSFetchRequest<Usuario> = Usuario.fetchRequest()
-         let predicate = NSPredicate(format: "id = %@", id)
+         let predicate = NSPredicate(format: "codigo = %@", codigo)
          fetchRequest.predicate = predicate
          do{
              let datos = try persitenContainer.viewContext.fetch(fetchRequest)
